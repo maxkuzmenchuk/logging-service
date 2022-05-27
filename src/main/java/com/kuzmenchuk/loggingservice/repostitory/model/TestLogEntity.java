@@ -2,11 +2,10 @@ package com.kuzmenchuk.loggingservice.repostitory.model;
 
 import com.kuzmenchuk.loggingservice.util.enums.EntityType;
 import com.kuzmenchuk.loggingservice.util.enums.OperationType;
+import com.kuzmenchuk.loggingservice.util.enums.UpdatedField;
 import lombok.*;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Table;
+import javax.persistence.*;
 import java.time.LocalDateTime;
 
 @AllArgsConstructor
@@ -20,7 +19,8 @@ public class TestLogEntity extends LogBaseEntity {
     private Long testID;
 
     @Column(name = "updated_field")
-    private String updatedField;
+    @Enumerated(EnumType.STRING)
+    private UpdatedField updatedField;
 
     @Column(name = "old_value")
     private String oldValue;
@@ -30,7 +30,7 @@ public class TestLogEntity extends LogBaseEntity {
 
     @Builder(builderMethodName = "testLogEntityBuilder")
     public TestLogEntity(Long logID, Integer version, OperationType operationType, EntityType entityType,
-                         Long updatingUserID, LocalDateTime updatingDate, Long testID, String updatedField, String oldValue, String newValue) {
+                         Long updatingUserID, LocalDateTime updatingDate, Long testID, UpdatedField updatedField, String oldValue, String newValue) {
         super(logID, version, operationType, entityType, updatingUserID, updatingDate);
         this.testID = testID;
         this.updatedField = updatedField;

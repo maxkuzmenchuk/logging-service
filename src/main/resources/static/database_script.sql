@@ -55,6 +55,7 @@ create table file_log
         constraint file_log_pk
             primary key,
     test_id          int       not null,
+    file_kind        varchar   not null,
     operation_type   varchar   not null,
     entity_type      varchar   not null,
     updating_user_id int       not null,

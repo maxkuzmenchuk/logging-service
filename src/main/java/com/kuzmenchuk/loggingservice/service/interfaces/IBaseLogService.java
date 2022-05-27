@@ -1,13 +1,15 @@
 package com.kuzmenchuk.loggingservice.service.interfaces;
 
-import java.util.Optional;
+import java.util.List;
 
 public interface IBaseLogService<T> {
-    void addToLog(T entityDTO);
+    T addToLog(T entityDTO);
 
     void deleteFromLog();
 
-    Optional<T> getLogByID(Long logID);
+    T getLogByID(Long logID);
+
+    List<T> getAllLogs();
 
 
 }
